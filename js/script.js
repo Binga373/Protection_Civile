@@ -1,76 +1,102 @@
 /* ===================================================
-   PROTECTION CIVILE DE BENI - SCRIPTS
-   Auteur: Protection Civile de Beni
-   Version: 1.0
+   PROTECTION CIVILE DE BENI - SCRIPTS PREMIUM
+   Version: 2.0
    =================================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // ========== INITIALISATION AOS ==========
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 50,
+    });
+    
+    // ========== PRELOADER ==========
+    setTimeout(function() {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.classList.add('hidden');
+            setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 500);
+        }
+    }, 1500);
     
     // ========== ÉLÉMENTS DOM ==========
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
-    const scrollTopBtn = document.getElementById('scrollTop');
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
     const header = document.getElementById('header');
     const alertButton = document.getElementById('alertButton');
     const emergencyModal = document.getElementById('emergencyModal');
-    const modalClose = document.querySelector('.modal-close');
+    const modalClose = document.querySelector('.modal-close-btn');
     const contactForm = document.getElementById('contactForm');
-    const statsNumbers = document.querySelectorAll('.stats-number');
+    const particlesContainer = document.getElementById('particles');
+    
+    // ========== PARTICULES HÉRO ==========
+    if (particlesContainer) {
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 4 + 2;
+            const left = Math.random() * 100;
+            const duration = Math.random() * 10 + 10;
+            const delay = Math.random() * 5;
+            
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = left + '%';
+            particle.style.animationDuration = duration + 's';
+            particle.style.animationDelay = delay + 's';
+            
+            particlesContainer.appendChild(particle);
+        }
+    }
     
     // ========== MENU MOBILE ==========
-    hamburger.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        
-        // Change l'icône du hamburger
-        const icon = hamburger.querySelector('i');
-        if (navMenu.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    });
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    }
     
-    // Fermer le menu quand on clique sur un lien
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
-            const icon = hamburger.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
             
-            // Mise à jour du lien actif
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
         });
     });
     
-    // Fermer le menu en cliquant en dehors
-    document.addEventListener('click', function(e) {
-        if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-            navMenu.classList.remove('active');
-            const icon = hamburger.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    });
-    
-    // ========== SCROLL TOP BUTTON ==========
+    // ========== HEADER SCROLL ==========
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 500) {
+        const scrollY = window.scrollY;
+        
+        // Header style
+        if (scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        // Scroll top button
+        if (scrollY > 500) {
             scrollTopBtn.classList.add('show');
         } else {
             scrollTopBtn.classList.remove('show');
         }
         
-        // Changement de style du header au scroll
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.3)';
-        } else {
-            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
-        }
+        // Navigation active
+        updateActiveNav(scrollY);
     });
     
     scrollTopBtn.addEventListener('click', function() {
@@ -80,18 +106,103 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // ========== NAVIGATION ACTIVE ==========
+    function updateActiveNav(scrollY) {
+        const sections = document.querySelectorAll('section[id]');
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + sectionId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    // ========== COMPTEURS ANIMÉS ==========
+    const counters = document.querySelectorAll('.counter');
+    
+    function animateCounters() {
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000;
+            const startTime = Date.now();
+            
+            function update() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3); // Ease-out
+                const current = Math.floor(eased * target);
+                
+                counter.textContent = current.toLocaleString();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    counter.textContent = target.toLocaleString();
+                }
+            }
+            
+            requestAnimationFrame(update);
+        });
+    }
+    
+    // Observer pour déclencher les compteurs
+    const impactSection = document.getElementById('impact');
+    if (impactSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(impactSection);
+    }
+    
+    // Compteurs du héro
+    const heroCounters = document.querySelectorAll('.hero-stat-number');
+    const heroSection = document.getElementById('home');
+    if (heroSection && heroCounters.length > 0) {
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    heroCounters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        counter.textContent = target + '+';
+                    });
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        });
+        heroObserver.observe(heroSection);
+    }
+    
     // ========== MODAL URGENCE ==========
-    alertButton.addEventListener('click', function() {
-        emergencyModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
+    if (alertButton) {
+        alertButton.addEventListener('click', function() {
+            emergencyModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
     
     function closeModal() {
         emergencyModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = '';
     }
     
-    modalClose.addEventListener('click', closeModal);
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
     
     emergencyModal.addEventListener('click', function(e) {
         if (e.target === emergencyModal) {
@@ -99,134 +210,110 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Fermer la modal avec la touche Echap
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && emergencyModal.classList.contains('active')) {
             closeModal();
         }
     });
     
-    // ========== FORMULAIRE DE CONTACT ==========
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Récupération des valeurs
-        const nom = document.getElementById('nom').value;
-        const telephone = document.getElementById('telephone').value;
-        const localite = document.getElementById('localite').value;
-        const sujet = document.getElementById('sujet').value;
-        const message = document.getElementById('message').value;
-        
-        // Validation simple
-        if (!nom || !telephone || !localite || !sujet || !message) {
-            showNotification('Veuillez remplir tous les champs du formulaire.', 'error');
-            return;
-        }
-        
-        // Simulation d'envoi (à remplacer par une vraie API)
-        console.log('Formulaire soumis:', {
-            nom,
-            telephone,
-            localite,
-            sujet,
-            message
-        });
-        
-        // Message de succès
-        showNotification('Votre message a été envoyé avec succès ! Nous vous contacterons dans les plus brefs délais.', 'success');
-        
-        // Reset du formulaire
-        contactForm.reset();
-    });
-    
-    // ========== COMPTEUR ANIMÉ ==========
-    function animateStats() {
-        statsNumbers.forEach(stat => {
-            const target = parseInt(stat.getAttribute('data-target'));
-            const duration = 2000; // 2 secondes
-            const step = target / (duration / 16); // 60 FPS
-            let current = 0;
-            
-            const counter = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    stat.textContent = target.toLocaleString() + '+';
-                    clearInterval(counter);
-                } else {
-                    stat.textContent = Math.floor(current).toLocaleString() + '+';
-                }
-            }, 16);
+    // Fermer la modal en cliquant sur le lien formulaire
+    const modalFormLink = document.querySelector('.modal-form-btn');
+    if (modalFormLink) {
+        modalFormLink.addEventListener('click', function() {
+            setTimeout(closeModal, 300);
         });
     }
     
-    // Intersection Observer pour déclencher l'animation
-    const statsSection = document.getElementById('statistiques');
+    // ========== FORMULAIRE DE CONTACT ==========
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nom = document.getElementById('nom').value.trim();
+            const telephone = document.getElementById('telephone').value.trim();
+            const localite = document.getElementById('localite').value.trim();
+            const sujet = document.getElementById('sujet').value;
+            const message = document.getElementById('message').value.trim();
+            
+            if (!nom || !telephone || !localite || !sujet || !message) {
+                showNotification('Veuillez remplir tous les champs du formulaire.', 'error');
+                return;
+            }
+            
+            // Simulation d'envoi
+            const formData = { nom, telephone, localite, sujet, message };
+            console.log('Formulaire soumis :', formData);
+            
+            showNotification('Message envoyé avec succès ! Nous vous contacterons rapidement.', 'success');
+            contactForm.reset();
+        });
+    }
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateStats();
-                observer.unobserve(entry.target);
+    // ========== NEWSLETTER ==========
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            if (emailInput && emailInput.value.trim()) {
+                showNotification('Inscription à la newsletter réussie !', 'success');
+                this.reset();
             }
         });
-    }, { threshold: 0.5 });
-    
-    if (statsSection) {
-        observer.observe(statsSection);
     }
     
     // ========== NOTIFICATIONS ==========
     function showNotification(message, type = 'success') {
-        // Supprimer les notifications existantes
         const existingNotifications = document.querySelectorAll('.notification');
-        existingNotifications.forEach(notif => notif.remove());
+        existingNotifications.forEach(n => n.remove());
         
-        // Créer la notification
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
+        
+        const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
         notification.innerHTML = `
-            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            <i class="fas ${icon}"></i>
             <span>${message}</span>
         `;
         
-        // Ajouter au DOM
         document.body.appendChild(notification);
         
-        // Afficher avec animation
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             notification.classList.add('show');
-        }, 100);
+        });
         
-        // Supprimer après 4 secondes
         setTimeout(() => {
             notification.classList.remove('show');
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
+            setTimeout(() => notification.remove(), 400);
         }, 4000);
     }
     
-    // ========== NAVIGATION ACTIVE AU SCROLL ==========
-    const sections = document.querySelectorAll('section[id]');
-    
-    window.addEventListener('scroll', function() {
-        let scrollY = window.pageYOffset;
-        
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
+    // ========== SMOOTH SCROLL POUR LIENS INTERNES ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
             
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
                 });
             }
         });
     });
     
-    console.log('Protection Civile de Beni - Site web initialisé avec succès.');
+    // ========== ANIMATION DES CARTES DE PRÉVENTION AU CLIC (MOBILE) ==========
+    const preventionCards = document.querySelectorAll('.prevention-card');
+    preventionCards.forEach(card => {
+        card.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                this.classList.toggle('flipped');
+            }
+        });
+    });
+    
+    console.log('🛡️ Protection Civile de Beni - Site Premium Initialisé');
 });
