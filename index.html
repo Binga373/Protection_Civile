@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Protection Civile de Beni - Protéger, secourir et prévenir les populations face aux risques de catastrophes, conflits et urgences sanitaires dans le territoire de Beni, Nord-Kivu, RDC.">
+    <meta name="keywords" content="Protection Civile, Beni, Nord-Kivu, RDC, urgences, catastrophes, secours, humanitaire">
+    <meta name="author" content="Protection Civile de Beni">
+    <title>Protection Civile de Beni | Protéger, Secourir, Prévenir</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <!-- Barre d'urgence flottante -->
+    <div class="emergency-bar" id="emergencyBar">
+        <div class="container">
+            <span class="emergency-icon"><i class="fas fa-exclamation-triangle"></i></span>
+            <span class="emergency-text">URGENCE 24h/24 - 7j/7</span>
+            <a href="tel:+243990000001" class="emergency-phone">
+                <i class="fas fa-phone-alt"></i> +243 99 00 00 01
+            </a>
+            <button class="emergency-alert-btn" id="alertButton">
+                <i class="fas fa-bell"></i> SIGNALER UNE URGENCE
+            </button>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#home" class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-shield-haltered"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-title">Protection Civile</span>
+                            <span class="logo-subtitle">Beni - Nord Kivu</span>
+                        </div>
+                    </a>
+                    
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link active"><i class="fas fa-home"></i> Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#missions" class="nav-link"><i class="fas fa-tasks"></i> Missions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#statistiques" class="nav-link"><i class="fas fa-chart-bar"></i> Impact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#actualites" class="nav-link"><i class="fas fa-newspaper"></i> Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#prevention" class="nav-link"><i class="fas fa-shield-alt"></i> Prévention</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                        </li>
+                    </ul>
+                    
+                    <button class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Héro -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Protection Civile<br>
+                    <span>de Beni</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Protéger, secourir et prévenir les populations face aux risques de catastrophes, 
+                    conflits et urgences sanitaires dans le territoire de Beni.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-phone-alt"></i> Nous Contacter
+                    </a>
+                    <a href="#missions" class="btn btn-outline">
+                        <i class="fas fa-arrow-down"></i> Découvrir nos missions
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Ans d'expérience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Interventions/an</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Volontaires</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Section Missions -->
+    <section class="missions section-padding" id="missions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Missions</h2>
+                <p class="section-subtitle">La Protection Civile de Beni intervient dans plusieurs domaines pour assurer la sécurité et le bien-être des populations</p>
+            </div>
+            
+            <div class="missions-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-fire-extinguisher"></i>
+                    </div>
+                    <h3>Lutte Anti-Incendie</h3>
+                    <p>Intervention rapide sur les feux urbains et de brousse. Évacuation des victimes et protection des biens avec des équipes formées et équipées.</p>
+                    <a href="#" class="mission-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Catastrophes Naturelles</h3>
+                    <p>Gestion des inondations, glissements de terrain et autres catastrophes. Équipes mobiles de première urgence déployables en moins de 2 heures.</p>
+                    <a href="#" class="mission-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-truck-medical"></i>
+                    </div>
+                    <h3>Secours Sanitaires</h3>
+                    <p>Évacuation sanitaire d'urgence, premiers soins avancés, collaboration étroite avec les centres de santé et hôpitaux de la région.</p>
+                    <a href="#" class="mission-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Sensibilisation</h3>
+                    <p>Campagnes communautaires sur les risques d'engins explosifs, la sécurité routière et la prévention des accidents domestiques.</p>
+                    <a href="#" class="mission-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-people-roof"></i>
+                    </div>
+                    <h3>Gestion des Déplacés</h3>
+                    <p>Appui logistique, abris d'urgence et distribution de kits de première nécessité pour les populations affectées par les conflits.</p>
+                    <a href="#" class="mission-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h3>Alerte Précoce</h3>
+                    <p>Système communautaire d'alerte en cas d'insécurité ou menace volcanique. Information en temps réel via radio et téléphonie mobile.</p>
+                    <a href="#" class="mission-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Statistiques Impact -->
+    <section class="statistiques section-padding" id="statistiques">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Notre Impact</h2>
+                <p class="section-subtitle">Quelques chiffres clés de notre action sur le terrain</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stats-card">
+                    <i class="fas fa-house-fire"></i>
+                    <div class="stats-number" data-target="1200">0</div>
+                    <p>Incendies maîtrisés</p>
+                </div>
+                <div class="stats-card">
+                    <i class="fas fa-life-ring"></i>
+                    <div class="stats-number" data-target="3500">0</div>
+                    <p>Personnes secourues</p>
+                </div>
+                <div class="stats-card">
+                    <i class="fas fa-people-group"></i>
+                    <div class="stats-number" data-target="25000">0</div>
+                    <p>Personnes sensibilisées</p>
+                </div>
+                <div class="stats-card">
+                    <i class="fas fa-person-military-pointing"></i>
+                    <div class="stats-number" data-target="200">0</div>
+                    <p>Volontaires actifs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Actualités -->
+    <section class="actualites section-padding bg-light" id="actualites">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Actualités du Terrain</h2>
+                <p class="section-subtitle">Restez informé des dernières interventions et activités de la Protection Civile</p>
+            </div>
+            
+            <div class="actualites-grid">
+                <article class="actualite-card">
+                    <div class="actualite-badge">Urgent</div>
+                    <div class="actualite-image">
+                        <i class="fas fa-kit-medical"></i>
+                    </div>
+                    <div class="actualite-content">
+                        <span class="actualite-date"><i class="far fa-calendar-alt"></i> 15 Mai 2026</span>
+                        <h3>Formation intensive des volontaires en secourisme d'urgence</h3>
+                        <p>30 jeunes de la commune de Mulekera ont été formés cette semaine aux gestes de premiers secours, en partenariat avec la Croix-Rouge de Beni.</p>
+                        <a href="#" class="btn btn-small">Lire la suite <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="actualite-card">
+                    <div class="actualite-image">
+                        <i class="fas fa-boxes-packing"></i>
+                    </div>
+                    <div class="actualite-content">
+                        <span class="actualite-date"><i class="far fa-calendar-alt"></i> 8 Mai 2026</span>
+                        <h3>Distribution de kits d'hygiène aux déplacés de Mangina</h3>
+                        <p>La PC Beni a mobilisé des ressources pour 200 ménages affectés par les récents affrontements dans la région de Mangina.</p>
+                        <a href="#" class="btn btn-small">Lire la suite <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="actualite-card">
+                    <div class="actualite-image">
+                        <i class="fas fa-person-drowning"></i>
+                    </div>
+                    <div class="actualite-content">
+                        <span class="actualite-date"><i class="far fa-calendar-alt"></i> 28 Avril 2026</span>
+                        <h3>Exercice de simulation d'inondation à Beni-Mbau</h3>
+                        <p>Un exercice grandeur nature a permis de tester la coordination entre les différents services de secours de la région de Beni.</p>
+                        <a href="#" class="btn btn-small">Lire la suite <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Prévention -->
+    <section class="prevention section-padding" id="prevention">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Conseils de Prévention</h2>
+                <p class="section-subtitle">Adoptez les bons réflexes pour votre sécurité et celle de votre communauté</p>
+            </div>
+            
+            <div class="prevention-grid">
+                <div class="prevention-card">
+                    <div class="prevention-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Feux de Brousse</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Ne jamais allumer de feu par vent fort</li>
+                        <li><i class="fas fa-check-circle"></i> Créez des pare-feux autour des habitations</li>
+                        <li><i class="fas fa-check-circle"></i> Signalez tout départ de feu immédiatement</li>
+                    </ul>
+                </div>
+                
+                <div class="prevention-card">
+                    <div class="prevention-icon">
+                        <i class="fas fa-cloud-rain"></i>
+                    </div>
+                    <h3>Inondations</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Évacuez vers les points hauts identifiés</li>
+                        <li><i class="fas fa-check-circle"></i> Écoutez la radio locale pour les alertes</li>
+                        <li><i class="fas fa-check-circle"></i> Préparez un kit d'urgence familial</li>
+                    </ul>
+                </div>
+                
+                <div class="prevention-card">
+                    <div class="prevention-icon">
+                        <i class="fas fa-bomb"></i>
+                    </div>
+                    <h3>Restes Explosifs</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Ne touchez jamais un objet suspect</li>
+                        <li><i class="fas fa-check-circle"></i> Signalez au numéro vert ou aux autorités</li>
+                        <li><i class="fas fa-check-circle"></i> Sensibilisez les enfants au danger</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact section-padding bg-dark" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Contactez-nous</h2>
+                    <p>La Protection Civile de Beni est à votre écoute. N'hésitez pas à nous contacter pour toute urgence, information ou collaboration.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Adresse</strong>
+                                <p>Avenue de la Paix, Commune de Mulekera, Beni, Nord-Kivu, RDC</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>Téléphone Urgence</strong>
+                                <p>+243 99 00 00 01</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p>protection.civile@beni-rdc.cd</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Heures d'ouverture</strong>
+                                <p>Bureau : Lundi - Samedi, 8h - 17h<br>Astreinte : 24h/24 - 7j/7</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envoyez un message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="nom" placeholder="Votre nom complet" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" id="telephone" placeholder="Votre téléphone" required>
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="localite" placeholder="Votre localité / quartier" required>
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="sujet" required>
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="urgence">Signaler une urgence</option>
+                                <option value="information">Demande d'information</option>
+                                <option value="volontariat">Devenir volontaire</option>
+                                <option value="partenariat">Partenariat</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Votre message..." required></textarea>
+                            <i class="fas fa-message"></i>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-submit">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-shield-haltered"></i> Protection Civile de Beni</h4>
+                    <p>Protéger, secourir et prévenir les populations face aux risques de catastrophes dans le territoire de Beni, Nord-Kivu.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="#missions"><i class="fas fa-chevron-right"></i> Missions</a></li>
+                        <li><a href="#actualites"><i class="fas fa-chevron-right"></i> Actualités</a></li>
+                        <li><a href="#prevention"><i class="fas fa-chevron-right"></i> Prévention</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Partenaires</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Croix-Rouge RDC</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> OCHA Nord-Kivu</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> MONUSCO Beni</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Ministère de l'Intérieur</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Protection Civile de Beni. Tous droits réservés.</p>
+                <p>Développé avec <i class="fas fa-heart" style="color: #e74c3c;"></i> pour servir la communauté</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Modal Urgence -->
+    <div class="modal-overlay" id="emergencyModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <i class="fas fa-exclamation-triangle modal-icon"></i>
+            <h2>Signalement d'Urgence</h2>
+            <p>Pour toute urgence nécessitant une intervention immédiate, appelez directement notre ligne d'urgence :</p>
+            <a href="tel:+243990000001" class="emergency-number">
+                <i class="fas fa-phone-alt"></i> +243 99 00 00 01
+            </a>
+            <p class="modal-note">Ou remplissez le formulaire de contact ci-dessous pour les situations non urgentes.</p>
+            <a href="#contact" class="btn btn-primary">Aller au formulaire</a>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
